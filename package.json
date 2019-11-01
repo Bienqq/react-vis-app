@@ -1,11 +1,40 @@
 {
   "name": "chart-3d-react-app",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "license": "MIT",
+  "description": "3D chart plotting app",
+  "author": {
+    "email": "tomek-1996-1996@o2.pl",
+    "name": "Tomasz Bieniek"
+  },
+  "homepage": "https://github.com/Bienqq/chart-3d-react-app#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bienqq/chart-3d-react-app.git"
+  },
+  "keywords": [
+    "chart",
+    "3d"
+  ],
   "dependencies": {
+    "@material-ui/core": "^4.5.1",
+    "@material-ui/icons": "^4.5.1",
+    "clsx": "latest",
+    "mathjs": "^6.2.3",
+    "mdi-material-ui": "^6.8.0",
+    "plotly.js": "^1.50.1",
+    "prop-types": "^15.7.2",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
-    "react-scripts": "3.2.0"
+    "react-plotly.js": "^2.4.0",
+    "react-redux": "^7.1.1",
+    "react-scripts": "3.2.0",
+    "react-slidedown": "^2.4.4",
+    "redux": "^4.0.4",
+    "redux-devtools-extension": "^2.13.8",
+    "typeface-roboto": "0.0.75",
+    "underscore": "^1.9.1"
   },
   "scripts": {
     "start": "react-scripts start",
