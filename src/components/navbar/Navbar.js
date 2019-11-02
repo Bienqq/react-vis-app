@@ -8,7 +8,6 @@ import Button from '@material-ui/core/Button';
 import SvgIcon from '@material-ui/core/SvgIcon';
 import {Function} from 'mdi-material-ui'
 import ErrorSnackbar from "../snackbar/ErrorSnackbar";
-import MathParser from "../../utils/MathParser";
 import MoreOptions from "./MoreOptions";
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';

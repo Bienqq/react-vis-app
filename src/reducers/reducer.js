@@ -2,7 +2,7 @@ import {UPDATE_PLOTTING_DATA, UPDATE_FUNCTION_FORM} from '../constants/actionTyp
 
 const initState = {
     formula: "f(x,y) = ",
-    start: 10,
+    start: -10,
     end: 10,
     step: 0.1,
 };

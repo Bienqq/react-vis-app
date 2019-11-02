@@ -11,7 +11,7 @@ class MathParser {
         this.z = [];
     }
 
-    async evaluate() {
+     evaluate() {
         for (let x of this.x) {
             const temp = [];
             for (let y of this.y) {

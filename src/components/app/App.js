@@ -7,19 +7,15 @@ import './App.css';
 
 class App extends React.Component {
 
-    state = {
-        drawPlot: false,
-    };
-
     _drawPlot = () => {
-        this.setState({drawPlot: true})
+        this.plot.drawPlot()
     };
 
     render() {
         return (
             <div>
                 <Navbar draw={this._drawPlot}/>
-                <FlexPlot draw={this.state.drawPlot}/>
+                <FlexPlot onRef={ref => this.plot = ref}/>
             </div>
         );
     }
