@@ -1,21 +1,39 @@
 import React from 'react';
 import Snackbar from '@material-ui/core/Snackbar';
 import SnackbarContentWrapper from './SnackbarContentWrapper';
+import {hideSnackbar} from "../../actions/actions";
+import {connect} from 'react-redux'
 
-function ErrorSnackbar({open, onSnackbarClose}) {
+function ErrorSnackbar(props) {
+
+    const onSnackbarCLose = () => {
+        props.hideSnackbar(true)
+    };
+
+    const {showSnackbar, snackbarOptions} = props;
+
     return (
-            <Snackbar
-                anchorOrigin={{ vertical: 'bottom', horizontal: 'center'}}
-                open={open}
-                autoHideDuration={5000}
-                onClose={onSnackbarClose}
-            >
-                <SnackbarContentWrapper
-                    onClose={onSnackbarClose}
-                    message="Cannot parse function !"
-                />
-            </Snackbar>
+        <Snackbar
+            anchorOrigin={{vertical: 'bottom', horizontal: 'center'}}
+            open={showSnackbar}
+            autoHideDuration={5000}
+            onClose={onSnackbarCLose}
+        >
+            <SnackbarContentWrapper
+                onClose={onSnackbarCLose}
+                message={snackbarOptions.message}
+                options={snackbarOptions}
+            />
+        </Snackbar>
     );
 }
 
-export default ErrorSnackbar;
+const mapStateToProps = ({showSnackbar, snackbarOptions}) => ({showSnackbar, snackbarOptions});
+
+const mapDispatchToProps = dispatch => {
+    return {
+        hideSnackbar: () => dispatch(hideSnackbar(false)),
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ErrorSnackbar);

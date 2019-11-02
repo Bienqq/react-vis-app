@@ -25,7 +25,8 @@ const useStylesWrapper = makeStyles(theme => ({
 
 function SnackbarContentWrapper(props) {
     const classes = useStylesWrapper();
-    const {message, onClose} = props;
+    const {message, onClose, options} = props;
+    // todo handle options
 
     return (
         <SnackbarContent

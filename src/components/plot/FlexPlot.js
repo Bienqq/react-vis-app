@@ -4,6 +4,7 @@ import Plotly from 'plotly.js/dist/plotly-gl3d.min'
 import Box from '@material-ui/core/Box';
 import {connect} from 'react-redux'
 import MathParser from "../../utils/MathParser";
+import {showSnackbar} from "../../actions/actions";
 
 const PlotlyComponent = createPlotlyComponent(Plotly);
 
@@ -41,7 +42,7 @@ class FlexPlot extends React.Component {
             const {x, y, z} = parser.evaluate();
             this.setState({x, y, z})
         } catch (e) {
-            console.error(e)
+            this.props.showSnackbar(true, {message: "Cannot parse function!"});
         }
     };
 
@@ -67,4 +68,11 @@ class FlexPlot extends React.Component {
 
 const mapStateToProps = ({formula, start, end, step}) => ({formula, start, end, step});
 
-export default connect(mapStateToProps)(FlexPlot);
+//todo handle options
+const mapDispatchToProps = dispatch => {
+    return {
+        showSnackbar: (show, options) => dispatch(showSnackbar(show, options)),
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(FlexPlot);

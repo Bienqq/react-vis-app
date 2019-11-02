@@ -7,7 +7,6 @@ import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import SvgIcon from '@material-ui/core/SvgIcon';
 import {Function} from 'mdi-material-ui'
-import ErrorSnackbar from "../snackbar/ErrorSnackbar";
 import MoreOptions from "./MoreOptions";
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
@@ -67,7 +66,6 @@ class Navbar extends React.Component {
 
     state = {
         showMoreOptions: false,
-        showError: false,
     };
 
     _handleDrawButton = () => {
@@ -76,10 +74,6 @@ class Navbar extends React.Component {
 
     _onInputChange = (event) => {
         this.props.updateFunctionForm(event.target.value)
-    };
-
-    _onSnackbarClose = () => {
-        this.setState({showError: false})
     };
 
     _handleShowMoreOptions = () => {
@@ -117,7 +111,6 @@ class Navbar extends React.Component {
                     </Toolbar>
                     <MoreOptions open={this.state.showMoreOptions}/>
                 </AppBar>
-                <ErrorSnackbar open={this.state.showError} onSnackbarClose={this._onSnackbarClose}/>
             </div>
         );
     }
