@@ -4,7 +4,7 @@ import SnackbarContentWrapper from './SnackbarContentWrapper';
 import {hideSnackbar} from "../../actions/actions";
 import {connect} from 'react-redux'
 
-function ErrorSnackbar(props) {
+function GlobalSnackbar(props) {
 
     const onSnackbarCLose = () => {
         props.hideSnackbar(true)
@@ -36,4 +36,4 @@ const mapDispatchToProps = dispatch => {
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ErrorSnackbar);
+export default connect(mapStateToProps, mapDispatchToProps)(GlobalSnackbar);

@@ -5,6 +5,8 @@ import Box from '@material-ui/core/Box';
 import {connect} from 'react-redux'
 import MathParser from "../../utils/MathParser";
 import {showSnackbar} from "../../actions/actions";
+import Button from '@material-ui/core/Button';
+import ShareOutlinedIcon from '@material-ui/icons/ShareOutlined';
 
 const PlotlyComponent = createPlotlyComponent(Plotly);
 
@@ -24,7 +26,8 @@ class FlexPlot extends React.Component {
     state = {
         x: null,
         y: null,
-        z: null
+        z: null,
+        finished: false
     };
 
     componentDidMount() {
@@ -40,7 +43,7 @@ class FlexPlot extends React.Component {
         try {
             const parser = new MathParser(formula, start, end, step);
             const {x, y, z} = parser.evaluate();
-            this.setState({x, y, z})
+            this.setState({x, y, z, finished: true})
         } catch (e) {
             this.props.showSnackbar(true, {message: "Cannot parse function!"});
         }
@@ -59,8 +62,17 @@ class FlexPlot extends React.Component {
         },
         ];
         return (
-            <Box flexDirection="row" flexWrap="nowrap" display="flex" justifyContent="center" pt={1}>
+            <Box flexDirection="column" flexWrap="nowrap" display="flex" justifyContent="center" alignItems="center"
+                 pt={1}>
                 <PlotlyComponent data={data} layout={layout} config={config}/>
+
+                {this.state.finished &&
+                <Box>
+                    <Button color="primary" size="small" variant="contained" onClick={this._handleShowMoreOptions}>
+                        <ShareOutlinedIcon/> Share
+                    </Button>
+                </Box>}
+
             </Box>
         )
     }

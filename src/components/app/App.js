@@ -4,7 +4,7 @@ import FlexPlot from "../plot/FlexPlot";
 
 
 import './App.css';
-import ErrorSnackbar from "../snackbar/ErrorSnackbar";
+import GlobalSnackbar from "../snackbar/GlobalSnackbar";
 
 class App extends React.Component {
 
@@ -17,7 +17,7 @@ class App extends React.Component {
             <div>
                 <Navbar draw={this._drawPlot}/>
                 <FlexPlot onRef={ref => this.plot = ref}/>
-                <ErrorSnackbar/>
+                <GlobalSnackbar/>
             </div>
         );
     }
