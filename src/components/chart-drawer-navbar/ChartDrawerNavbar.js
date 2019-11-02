@@ -12,6 +12,7 @@ import ButtonGroup from '@material-ui/core/ButtonGroup';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import {connect} from 'react-redux'
 import {updateFunctionForm} from '../../actions/actions';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 const styles = theme => ({
     root: {
@@ -62,7 +63,7 @@ const styles = theme => ({
     },
 });
 
-class Navbar extends React.Component {
+class ChartDrawerNavbar extends React.Component {
 
     state = {
         showMoreOptions: false,
@@ -111,16 +112,19 @@ class Navbar extends React.Component {
                     </Toolbar>
                     <MoreOptions open={this.state.showMoreOptions}/>
                 </AppBar>
+                <Button variant="outlined" color="primary" href="/graph-drawer">
+                    <ArrowBackIcon/> Change app
+                </Button>
             </div>
         );
     }
 }
 
-Navbar.propTypes = {
+ChartDrawerNavbar.propTypes = {
     classes: PropTypes.object.isRequired
 };
 
-const componentWithStyles = withStyles(styles)(Navbar);
+const componentWithStyles = withStyles(styles)(ChartDrawerNavbar);
 
 const mapStateToProps = ({formula}) => ({formula});
 

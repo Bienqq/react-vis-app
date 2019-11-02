@@ -8,6 +8,7 @@ import {showSnackbar} from "../../actions/actions";
 import Button from '@material-ui/core/Button';
 import ShareOutlinedIcon from '@material-ui/icons/ShareOutlined';
 
+
 const PlotlyComponent = createPlotlyComponent(Plotly);
 
 const layout = {
@@ -68,7 +69,7 @@ class FlexPlot extends React.Component {
 
                 {this.state.finished &&
                 <Box>
-                    <Button color="primary" size="small" variant="contained" onClick={this._handleShowMoreOptions}>
+                    <Button color="primary" size="small" variant="contained">
                         <ShareOutlinedIcon/> Share
                     </Button>
                 </Box>}
@@ -80,7 +81,7 @@ class FlexPlot extends React.Component {
 
 const mapStateToProps = ({formula, start, end, step}) => ({formula, start, end, step});
 
-//todo handle options
+//todo handle snackbar options
 const mapDispatchToProps = dispatch => {
     return {
         showSnackbar: (show, options) => dispatch(showSnackbar(show, options)),
