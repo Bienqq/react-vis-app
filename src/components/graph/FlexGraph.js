@@ -62,7 +62,6 @@ class FlexGraph extends React.Component {
         this.setState({graphData: {nodes: nodes, edges: edges}, finished: true})
     };
 
-
     render() {
         return (
             <Box flexDirection="column" flexWrap="nowrap" display="flex" justifyContent="center" alignItems="center"
@@ -86,6 +85,7 @@ class FlexGraph extends React.Component {
     }
 }
 
+//todo handle snackbar option - error variant in this case
 const mapDispatchToProps = dispatch => {
     return {
         showSnackbar: (show, options) => dispatch(showSnackbar(show, options)),

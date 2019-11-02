@@ -81,7 +81,7 @@ class FlexPlot extends React.Component {
 
 const mapStateToProps = ({formula, start, end, step}) => ({formula, start, end, step});
 
-//todo handle snackbar options
+//todo handle snackbar option - error variant in this case
 const mapDispatchToProps = dispatch => {
     return {
         showSnackbar: (show, options) => dispatch(showSnackbar(show, options)),

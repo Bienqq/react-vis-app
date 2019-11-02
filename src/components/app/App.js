@@ -8,7 +8,6 @@ import GraphDrawer from "../graph-drawer/GraphDrawer";
 import './App.css';
 
 function App() {
-
     return (
         <div>
             <BrowserRouter>
@@ -18,7 +17,6 @@ function App() {
             <GlobalSnackbar/>
         </div>
     );
-
 }
 
 export default App;

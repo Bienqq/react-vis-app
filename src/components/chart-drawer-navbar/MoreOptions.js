@@ -19,7 +19,6 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-
 function MoreOptions({open, start, end, step, updateData}) {
     const classes = useStyles();
 
@@ -59,14 +58,13 @@ function MoreOptions({open, start, end, step, updateData}) {
                         onChange={handleChange('step')}
                         margin="normal"
                     />
-
                 </form>
             </div>
         </SlideDown>
     )
 }
 
-const mapStateToProps = ({start,end,step}) => ({start, end,step});
+const mapStateToProps = ({start, end, step}) => ({start, end, step});
 
 const mapDispatchToProps = dispatch => {
     return {
