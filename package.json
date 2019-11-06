@@ -3,15 +3,15 @@
   "version": "0.1.0",
   "private": false,
   "license": "MIT",
-  "description": "3D chart plotting app",
+  "description": "React visualisation app",
   "author": {
     "email": "tomek-1996-1996@o2.pl",
     "name": "Tomasz Bieniek"
   },
-  "homepage": "https://github.com/Bienqq/chart-3d-react-app#readme",
+  "homepage": "https://github.com/Bienqq/react-vis-app#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Bienqq/chart-3d-react-app.git"
+    "url": "git+https://github.com/Bienqq/react-vis-app.git"
   },
   "keywords": [
     "chart",
@@ -43,7 +43,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
