@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/Bienqq/react-vis-app/static/css/main.1e207bad.chunk.css",
+    "main.js": "/Bienqq/react-vis-app/static/js/main.fc90a97d.chunk.js",
+    "main.js.map": "/Bienqq/react-vis-app/static/js/main.fc90a97d.chunk.js.map",
+    "runtime-main.js": "/Bienqq/react-vis-app/static/js/runtime-main.349c97b6.js",
+    "runtime-main.js.map": "/Bienqq/react-vis-app/static/js/runtime-main.349c97b6.js.map",
+    "static/css/2.570762c7.chunk.css": "/Bienqq/react-vis-app/static/css/2.570762c7.chunk.css",
+    "static/js/2.7946d2c5.chunk.js": "/Bienqq/react-vis-app/static/js/2.7946d2c5.chunk.js",
+    "static/js/2.7946d2c5.chunk.js.map": "/Bienqq/react-vis-app/static/js/2.7946d2c5.chunk.js.map",
+    "index.html": "/Bienqq/react-vis-app/index.html",
+    "precache-manifest.4c94ceaa3d03ccee91db88bbe4df0abe.js": "/Bienqq/react-vis-app/precache-manifest.4c94ceaa3d03ccee91db88bbe4df0abe.js",
+    "service-worker.js": "/Bienqq/react-vis-app/service-worker.js",
+    "static/css/2.570762c7.chunk.css.map": "/Bienqq/react-vis-app/static/css/2.570762c7.chunk.css.map",
+    "static/css/main.1e207bad.chunk.css.map": "/Bienqq/react-vis-app/static/css/main.1e207bad.chunk.css.map",
+    "static/media/index.css": "/Bienqq/react-vis-app/static/media/roboto-latin-900italic.ebf6d164.woff2"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.349c97b6.js",
+    "static/css/2.570762c7.chunk.css",
+    "static/js/2.7946d2c5.chunk.js",
+    "static/css/main.1e207bad.chunk.css",
+    "static/js/main.fc90a97d.chunk.js"
+  ]
+}
