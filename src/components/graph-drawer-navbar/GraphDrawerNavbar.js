@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import PublishIcon from '@material-ui/icons/Publish';
+import { Link } from 'react-router-dom';
 
 const styles = theme => ({
     root: {
@@ -45,7 +46,7 @@ function GraphDrawerNavbar({classes, fileUploaded}) {
 
                 </Toolbar>
             </AppBar>
-            <Button variant="outlined" color="primary" href="/">
+            <Button variant="outlined" color="primary" component={Link} to="/">
                 <ArrowBackIcon/> Change app
             </Button>
         </div>

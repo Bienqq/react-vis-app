@@ -13,6 +13,8 @@ import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import {connect} from 'react-redux'
 import {updateFunctionForm} from '../../actions/actions';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import { Link } from 'react-router-dom';
+
 
 const styles = theme => ({
     root: {
@@ -112,7 +114,7 @@ class ChartDrawerNavbar extends React.Component {
                     </Toolbar>
                     <MoreOptions open={this.state.showMoreOptions}/>
                 </AppBar>
-                <Button variant="outlined" color="primary" href="/graph-drawer">
+                <Button variant="outlined" color="primary" component={Link} to="/graph-drawer">
                     <ArrowBackIcon/> Change app
                 </Button>
             </div>
