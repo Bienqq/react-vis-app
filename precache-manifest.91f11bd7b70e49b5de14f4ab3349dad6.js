@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "310f158f9de2c60594a37dc5f96c2117",
+    "revision": "02f764fa65700a654a123742827ae5c8",
     "url": "/react-vis-app/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/react-vis-app/static/css/2.6c8b1e54.chunk.css"
   },
   {
-    "revision": "ee760601db95cd83f16a",
+    "revision": "ce3e2a90ea34f43a8027",
     "url": "/react-vis-app/static/css/main.1e207bad.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/react-vis-app/static/js/2.a27c4441.chunk.js"
   },
   {
-    "revision": "ee760601db95cd83f16a",
-    "url": "/react-vis-app/static/js/main.45792750.chunk.js"
+    "revision": "ce3e2a90ea34f43a8027",
+    "url": "/react-vis-app/static/js/main.26f658d0.chunk.js"
   },
   {
     "revision": "634d2fff61afcfcfd305",
