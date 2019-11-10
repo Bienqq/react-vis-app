@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/react-vis-app/static/css/main.1e207bad.chunk.css",
-    "main.js": "/react-vis-app/static/js/main.01c15944.chunk.js",
-    "main.js.map": "/react-vis-app/static/js/main.01c15944.chunk.js.map",
+    "main.js": "/react-vis-app/static/js/main.6ed59b84.chunk.js",
+    "main.js.map": "/react-vis-app/static/js/main.6ed59b84.chunk.js.map",
     "runtime-main.js": "/react-vis-app/static/js/runtime-main.2dcc3359.js",
     "runtime-main.js.map": "/react-vis-app/static/js/runtime-main.2dcc3359.js.map",
     "static/css/2.6c8b1e54.chunk.css": "/react-vis-app/static/css/2.6c8b1e54.chunk.css",
     "static/js/2.7946d2c5.chunk.js": "/react-vis-app/static/js/2.7946d2c5.chunk.js",
     "static/js/2.7946d2c5.chunk.js.map": "/react-vis-app/static/js/2.7946d2c5.chunk.js.map",
     "index.html": "/react-vis-app/index.html",
-    "precache-manifest.e7af1b5fc2f49dd3e1a864c7058792b0.js": "/react-vis-app/precache-manifest.e7af1b5fc2f49dd3e1a864c7058792b0.js",
+    "precache-manifest.e6e76a509546fb8aa735751a1117d7db.js": "/react-vis-app/precache-manifest.e6e76a509546fb8aa735751a1117d7db.js",
     "service-worker.js": "/react-vis-app/service-worker.js",
     "static/css/2.6c8b1e54.chunk.css.map": "/react-vis-app/static/css/2.6c8b1e54.chunk.css.map",
     "static/css/main.1e207bad.chunk.css.map": "/react-vis-app/static/css/main.1e207bad.chunk.css.map",
@@ -20,6 +20,6 @@
     "static/css/2.6c8b1e54.chunk.css",
     "static/js/2.7946d2c5.chunk.js",
     "static/css/main.1e207bad.chunk.css",
-    "static/js/main.01c15944.chunk.js"
+    "static/js/main.6ed59b84.chunk.js"
   ]
 }
