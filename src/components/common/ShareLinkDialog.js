@@ -7,7 +7,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import LinkIcon from '@material-ui/icons/Link';
 import Slide from '@material-ui/core/Slide';
-
+import TemporaryPopover from "./TemporaryPopover";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
@@ -15,13 +15,17 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 function ShareLinkDialog({open, handleClose, link}) {
 
-    const copyLink = () => {
-        const dummy = document.createElement("textarea");
-        document.body.appendChild(dummy);
-        dummy.value = link;
-        dummy.select();
-        document.execCommand("copy");
-        document.body.removeChild(dummy);
+    const [showPopover, setShowPopover] = React.useState(false);
+    const [anchorEl, setAnchorEl] = React.useState(null);
+
+
+    const copyLink = event => {
+        setAnchorEl(event.currentTarget);
+        navigator.clipboard.writeText(link)
+            .finally(() => {
+                setShowPopover(true);
+                setTimeout(() => setShowPopover(false), 600)
+            })
     };
 
     return (
@@ -39,10 +43,13 @@ function ShareLinkDialog({open, handleClose, link}) {
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
-                        <Button onClick={copyLink} color="primary">
-                            <LinkIcon/> Copy link
-                        </Button>
+
+                    <Button onClick={copyLink} color="primary">
+                        <LinkIcon/> Copy link
+                    </Button>
+
                 </DialogActions>
+                <TemporaryPopover open={showPopover} anchorEl={anchorEl}/>
             </Dialog>
         </div>
     );
