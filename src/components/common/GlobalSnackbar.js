@@ -1,7 +1,7 @@
 import React from 'react';
 import Snackbar from '@material-ui/core/Snackbar';
 import SnackbarContentWrapper from './SnackbarContentWrapper';
-import {hideSnackbar} from "../../actions/actions";
+import {globalSnackbar} from "../../actions/actions";
 import {connect} from 'react-redux'
 
 function GlobalSnackbar(props) {
@@ -32,7 +32,7 @@ const mapStateToProps = ({showSnackbar, snackbarOptions}) => ({showSnackbar, sna
 
 const mapDispatchToProps = dispatch => {
     return {
-        hideSnackbar: () => dispatch(hideSnackbar(false)),
+        hideSnackbar: () => dispatch(globalSnackbar(false)),
     }
 };
 

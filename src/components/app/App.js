@@ -1,7 +1,7 @@
 import React from 'react';
 import {BrowserRouter, Route} from "react-router-dom";
 
-import GlobalSnackbar from "../snackbar/GlobalSnackbar";
+import GlobalSnackbar from "../common/GlobalSnackbar";
 import ChartDrawer from "../3d-chart-drawer/ChartDrawer";
 import GraphDrawer from "../graph-drawer/GraphDrawer";
 

@@ -4,10 +4,10 @@ import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import ShareOutlinedIcon from '@material-ui/icons/ShareOutlined';
 import {processAndValidateGraphData} from "../../utils/GraphUtils";
-import {showSnackbar} from "../../actions/actions";
+import {globalSnackbar} from "../../actions/actions";
 import {connect} from 'react-redux';
 
-const options = {
+const graphOptions = {
     layout: {
         hierarchical: false
     },
@@ -70,7 +70,7 @@ class FlexGraph extends React.Component {
                 <Box>
                     <Graph
                         graph={this.state.graphData}
-                        options={options}
+                        options={graphOptions}
                     />
                 </Box>
 
@@ -85,10 +85,10 @@ class FlexGraph extends React.Component {
     }
 }
 
-//todo handle snackbar option - error variant in this case
+//todo handle common option - error variant in this case
 const mapDispatchToProps = dispatch => {
     return {
-        showSnackbar: (show, options) => dispatch(showSnackbar(show, options)),
+        showSnackbar: (show, options) => dispatch(globalSnackbar(show, options)),
     }
 };
 

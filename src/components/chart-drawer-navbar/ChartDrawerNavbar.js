@@ -14,6 +14,7 @@ import {connect} from 'react-redux'
 import {updateFunctionForm} from '../../actions/actions';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import { Link } from 'react-router-dom';
+import LinearProgress from "@material-ui/core/LinearProgress";
 
 
 const styles = theme => ({
@@ -84,7 +85,7 @@ class ChartDrawerNavbar extends React.Component {
     };
 
     render() {
-        const {classes, formula} = this.props;
+        const {classes, formula, showLinearProgress} = this.props;
         return (
             <div className={classes.root}>
                 <AppBar position="relative" className={classes.appBar}>
@@ -114,6 +115,7 @@ class ChartDrawerNavbar extends React.Component {
                     </Toolbar>
                     <MoreOptions open={this.state.showMoreOptions}/>
                 </AppBar>
+                {showLinearProgress && <LinearProgress color="secondary"/> }
                 <Button variant="outlined" color="primary" component={Link} to="/graph-drawer">
                     <ArrowBackIcon/> Change app
                 </Button>
@@ -128,7 +130,7 @@ ChartDrawerNavbar.propTypes = {
 
 const componentWithStyles = withStyles(styles)(ChartDrawerNavbar);
 
-const mapStateToProps = ({formula}) => ({formula});
+const mapStateToProps = ({formula, showLinearProgress}) => ({formula, showLinearProgress});
 
 const mapDispatchToProps = dispatch => {
     return {

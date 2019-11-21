@@ -1,13 +1,15 @@
 import React from 'react';
 import createPlotlyComponent from 'react-plotly.js/factory';
-import Plotly from 'plotly.js/dist/plotly-gl3d.min'
+import Plotly from 'plotly.js/dist/plotly-gl3d'
 import Box from '@material-ui/core/Box';
 import {connect} from 'react-redux'
 import MathParser from "../../utils/MathParser";
-import {showSnackbar} from "../../actions/actions";
+import {globalSnackbar, globalLinearProgress} from "../../actions/actions";
 import Button from '@material-ui/core/Button';
 import ShareOutlinedIcon from '@material-ui/icons/ShareOutlined';
-
+import axios from 'axios'
+import API from '../../config/config'
+import ShareLinkDialog from "../common/ShareLinkDialog";
 
 const PlotlyComponent = createPlotlyComponent(Plotly);
 
@@ -24,11 +26,18 @@ const config = {
 
 class FlexPlot extends React.Component {
 
+    constructor(props) {
+        super(props);
+        this.plotRef = React.createRef()
+    }
+
     state = {
         x: null,
         y: null,
         z: null,
-        finished: false
+        finished: false,
+        showDialog: false,
+        shareLink: ''
     };
 
     componentDidMount() {
@@ -39,13 +48,32 @@ class FlexPlot extends React.Component {
         this.props.onRef(undefined)
     }
 
+    _onShareButtonClicked = () => {
+        const {formula, start, end, step, showLinearProgress, showSnackbar} = this.props;
+        showLinearProgress(true);
+        axios.post(API.SHARE_URL, {formula, start, end, step})
+            .then(response => {
+                this.setState({showDialog: true, shareLink: response.data.share_url})
+            })
+            .catch(err => {
+                showSnackbar(true, {message: err.message});
+                console.error(err)
+            })
+            .finally(() => showLinearProgress(false))
+    };
+
+    _onShareDialogClose = () => {
+        this.setState({showDialog: false})
+    };
+
     drawPlot = () => {
         const {formula, start, end, step} = this.props;
         try {
             const parser = new MathParser(formula, start, end, step);
             const {x, y, z} = parser.evaluate();
             this.setState({x, y, z, finished: true})
-        } catch (e) {
+        } catch (err) {
+            console.error(err);
             this.props.showSnackbar(true, {message: "Cannot parse function!"});
         }
     };
@@ -65,14 +93,16 @@ class FlexPlot extends React.Component {
         return (
             <Box flexDirection="column" flexWrap="nowrap" display="flex" justifyContent="center" alignItems="center"
                  pt={1}>
-                <PlotlyComponent data={data} layout={layout} config={config}/>
+                <PlotlyComponent ref={this.plotRef} data={data} layout={layout} config={config}/>
 
                 {this.state.finished &&
                 <Box>
-                    <Button color="primary" size="small" variant="contained">
+                    <Button color="primary" size="small" variant="contained" onClick={this._onShareButtonClicked}>
                         <ShareOutlinedIcon/> Share
                     </Button>
                 </Box>}
+                <ShareLinkDialog handleClose={this._onShareDialogClose} open={this.state.showDialog}
+                                 link={this.state.shareLink}/>
 
             </Box>
         )
@@ -81,10 +111,11 @@ class FlexPlot extends React.Component {
 
 const mapStateToProps = ({formula, start, end, step}) => ({formula, start, end, step});
 
-//todo handle snackbar option - error variant in this case
+//todo handle common option - error variant in this case
 const mapDispatchToProps = dispatch => {
     return {
-        showSnackbar: (show, options) => dispatch(showSnackbar(show, options)),
+        showSnackbar: (show, options) => dispatch(globalSnackbar(show, options)),
+        showLinearProgress: (show) => dispatch(globalLinearProgress(show))
     }
 };
 

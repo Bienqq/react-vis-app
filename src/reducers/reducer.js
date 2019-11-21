@@ -1,4 +1,9 @@
-import {HIDE_SNACKBAR, SHOW_SNACKBAR, UPDATE_FUNCTION_FORM, UPDATE_PLOTTING_DATA} from '../constants/actionTypes'
+import {
+    GLOBAL_SNACKBAR,
+    UPDATE_FUNCTION_FORM,
+    UPDATE_PLOTTING_DATA,
+    GLOBAL_LINEAR_PROGRESS
+} from '../constants/actionTypes'
 
 const initState = {
     formula: "f(x,y) = ",
@@ -8,7 +13,8 @@ const initState = {
     showSnackbar: false,
     snackbarOptions: {
         message: ""
-    }
+    },
+    showLinearProgress: false,
 };
 
 const reducer = (state = initState, {type, payload}) => {
@@ -25,16 +31,16 @@ const reducer = (state = initState, {type, payload}) => {
                 ...state,
                 [propertyToUpdate]: value
             };
-        case SHOW_SNACKBAR:
+        case GLOBAL_SNACKBAR:
             return {
                 ...state,
-                showSnackbar: true,
+                showSnackbar: payload.show,
                 snackbarOptions: payload.snackbarOptions
             };
-        case HIDE_SNACKBAR:
+        case GLOBAL_LINEAR_PROGRESS:
             return {
                 ...state,
-                showSnackbar: false,
+                showLinearProgress: payload.show
             };
         default:
             return state

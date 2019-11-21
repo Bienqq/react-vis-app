@@ -1,4 +1,4 @@
-import {HIDE_SNACKBAR, SHOW_SNACKBAR, UPDATE_FUNCTION_FORM, UPDATE_PLOTTING_DATA} from "../constants/actionTypes";
+import {GLOBAL_SNACKBAR, UPDATE_FUNCTION_FORM, UPDATE_PLOTTING_DATA, GLOBAL_LINEAR_PROGRESS} from "../constants/actionTypes";
 
 export const updatePlottingData = (data) => {
     return {
@@ -18,9 +18,9 @@ export const updateFunctionForm = formula => {
     }
 };
 
-export const showSnackbar = (show, snackbarOptions) => {
+export const globalSnackbar = (show, snackbarOptions={}) => {
     return {
-        type: SHOW_SNACKBAR,
+        type: GLOBAL_SNACKBAR,
         payload: {
             show,
             snackbarOptions
@@ -28,12 +28,11 @@ export const showSnackbar = (show, snackbarOptions) => {
     }
 };
 
-export const hideSnackbar = show => {
+export const globalLinearProgress = show => {
     return {
-        type: HIDE_SNACKBAR,
+        type: GLOBAL_LINEAR_PROGRESS,
         payload: {
             show,
         }
     }
 };
-
