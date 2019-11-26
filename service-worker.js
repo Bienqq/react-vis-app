@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/react-vis-app/precache-manifest.a0a8874789031cf7089ee95bf69f85ab.js"
+  "/react-vis-app/precache-manifest.840ed7cc9de77a6c81982d821583fa69.js"
 );
 
 self.addEventListener('message', (event) => {
