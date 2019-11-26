@@ -4,7 +4,10 @@ import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import ShareOutlinedIcon from '@material-ui/icons/ShareOutlined';
 import {processAndValidateGraphData} from "../../utils/GraphUtils";
-import {globalSnackbar} from "../../actions/actions";
+import {globalSnackbar, globalLinearProgress} from "../../actions/actions";
+import axios from 'axios'
+import API from '../../config/config'
+import ShareLinkDialog from "../common/ShareLinkDialog";
 import {connect} from 'react-redux';
 
 const graphOptions = {
@@ -62,20 +65,30 @@ class FlexGraph extends React.Component {
         this.setState({graphData: {nodes: nodes, edges: edges}, finished: true})
     };
 
+    _onShareButtonClicked = () => {
+        const {showSnackbar, showLinearProgress} = this.props
+        axios.post(API.SHARE_URL, this.state.graphData)
+            .then(response => {
+                console.log(response)
+            })
+            .catch(err => {
+                showSnackbar(true, {message: err.message});
+                console.error(err)
+            })
+            .finally(() => showLinearProgress(false))
+    };
+
     render() {
         return (
             <Box flexDirection="column" flexWrap="nowrap" display="flex" justifyContent="center" alignItems="center"
                  pt={1}>
 
                 <Box>
-                    <Graph
-                        graph={this.state.graphData}
-                        options={graphOptions}
-                    />
+                    <Graph graph={this.state.graphData} options={graphOptions}/>
                 </Box>
 
                 {this.state.finished && <Box mt={4}>
-                    <Button color="primary" size="small" variant="contained">
+                    <Button color="primary" size="small" variant="contained" onClick={this._onShareButtonClicked}>
                         <ShareOutlinedIcon/> Share
                     </Button>
                 </Box>}
@@ -89,6 +102,7 @@ class FlexGraph extends React.Component {
 const mapDispatchToProps = dispatch => {
     return {
         showSnackbar: (show, options) => dispatch(globalSnackbar(show, options)),
+        showLinearProgress: (show) => dispatch(globalLinearProgress(show))
     }
 };
 

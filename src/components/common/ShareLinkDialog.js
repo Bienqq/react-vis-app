@@ -18,7 +18,6 @@ function ShareLinkDialog({open, handleClose, link}) {
     const [showPopover, setShowPopover] = React.useState(false);
     const [anchorEl, setAnchorEl] = React.useState(null);
 
-
     const copyLink = event => {
         setAnchorEl(event.currentTarget);
         navigator.clipboard.writeText(link)
@@ -43,11 +42,9 @@ function ShareLinkDialog({open, handleClose, link}) {
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
-
                     <Button onClick={copyLink} color="primary">
                         <LinkIcon/> Copy link
                     </Button>
-
                 </DialogActions>
                 <TemporaryPopover open={showPopover} anchorEl={anchorEl}/>
             </Dialog>
