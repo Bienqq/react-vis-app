@@ -42,8 +42,9 @@ class FlexGraph extends React.Component {
             nodes: [],
             edges: []
         },
-        finished: false
-
+        finished: false,
+        showDialog: false,
+        shareLink: ''
     };
 
     componentDidMount() {
@@ -66,16 +67,31 @@ class FlexGraph extends React.Component {
     };
 
     _onShareButtonClicked = () => {
-        const {showSnackbar, showLinearProgress} = this.props
-        axios.post(API.SHARE_URL, this.state.graphData)
+        const graphData = this.prepareRequestData();
+        console.log('REQUEST DATA')
+        console.log(graphData)
+        const {showSnackbar, showLinearProgress} = this.props;
+        axios.post(API.SHARE_GRAPH_URL, graphData)
             .then(response => {
-                console.log(response)
+                console.log('RESPONSE DATA')
+                console.log(response.data);
+                this.setState({showDialog: true, shareLink: response.data.shareUrl})
             })
             .catch(err => {
                 showSnackbar(true, {message: err.message});
                 console.error(err)
             })
             .finally(() => showLinearProgress(false))
+    };
+
+    prepareRequestData(){
+        const connections = this.state.graphData.edges.map(item => ({connection_from: item.from, connection_to: item.to}));
+        const nodes = this.state.graphData.nodes.map(item => ({node:item.label}));
+        return {connections, nodes}
+    }
+
+    _onShareDialogClose = () => {
+        this.setState({showDialog: false})
     };
 
     render() {
@@ -92,6 +108,9 @@ class FlexGraph extends React.Component {
                         <ShareOutlinedIcon/> Share
                     </Button>
                 </Box>}
+
+                <ShareLinkDialog handleClose={this._onShareDialogClose} open={this.state.showDialog}
+                                 link={this.state.shareLink}/>
 
             </Box>
         )

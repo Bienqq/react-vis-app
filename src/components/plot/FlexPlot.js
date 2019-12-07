@@ -51,9 +51,9 @@ class FlexPlot extends React.Component {
     _onShareButtonClicked = () => {
         const {formula, start, end, step, showLinearProgress, showSnackbar} = this.props;
         showLinearProgress(true);
-        axios.post(API.SHARE_URL, {formula, start, end, step})
+        axios.post(API.SHARE_PLOT_URL, {formula, start, end, step})
             .then(response => {
-                this.setState({showDialog: true, shareLink: response.data.share_url})
+                this.setState({showDialog: true, shareLink: response.data.shareUrl})
             })
             .catch(err => {
                 showSnackbar(true, {message: err.message});
